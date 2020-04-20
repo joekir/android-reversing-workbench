@@ -22,13 +22,13 @@ RUN apt-get update \
 
 RUN cd `mktemp -d` \
     && wget -nv https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool -O apktool \
-    && wget -nv https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.3.3.jar -O apktool.jar \
+    && wget -nv https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.4.1.jar -O apktool.jar \
     && sudo mv apktool* /usr/local/bin/ \
     && sudo chmod +x /usr/local/bin/apktool* \
     && git clone --recursive https://github.com/androguard/androguard.git \
     && cd androguard \
     && pip3 install --user .[magic] \
-    && wget -nv https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui_1.4.0-0_all.deb -O jdgui.deb \
+    && wget -nv https://github.com/java-decompiler/jd-gui/releases/download/v1.6.6/jd-gui-1.6.6.deb -O jdgui.deb \
     && sudo mkdir /usr/share/desktop-directories \
     && dpkg -i jdgui.deb \
     && echo "java --add-opens java.base/jdk.internal.loader=ALL-UNNAMED \
@@ -37,11 +37,10 @@ RUN cd `mktemp -d` \
     && chmod +x /usr/local/bin/jd-gui \
     && mkdir /opt/jadx \
     && cd /opt/jadx \
-    && wget -nv https://github.com/skylot/jadx/releases/download/v0.8.0/jadx-0.8.0.zip \
-    && unzip jadx-0.8.0.zip \
-    && rm jadx-0.8.0.zip \
+    && wget -nv https://github.com/skylot/jadx/releases/download/v1.1.0/jadx-1.1.0.zip -O jadx.zip \
+    && unzip jadx.zip \
+    && rm jadx.zip \
     && ln -s /opt/jadx/bin/jadx /usr/local/bin/jadx \
-    && ln -s /opt/scripts/apex.sh /usr/local/bin/apex \
     && cd /opt \
     && wget -nv https://github.com/pxb1988/dex2jar/releases/download/2.0/dex-tools-2.0.zip \
     && unzip dex-tools-2.0.zip \
