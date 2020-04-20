@@ -41,8 +41,9 @@ For the args above that aren't self-explanatory:
 
 ### GUI Decompilation
 
-Useful if you want to use use JD-GUI for example.    
-Note: If you need this to work on MacOS then you'll need to do some extra work with Xquartz see [here](https://sourabhbajaj.com/blog/2017/02/07/gui-applications-docker-mac/) for details.
+Useful if you want to use use JD-GUI tool, for example.
+
+_Note_: If you need this to work on MacOS then you'll need to do some extra work with Xquartz see [here](https://sourabhbajaj.com/blog/2017/02/07/gui-applications-docker-mac/) for details. Prior to running the below script XQuaertz will need to be running.
 
 `$ ./scripts/gui_launch.sh`
 
@@ -51,7 +52,7 @@ Then you could do something like:
 $ dex2jar /tmp/samples/yourfoo.apk
 $ jd-gui
 ```
-this will launch the GUI decompiler
+this will launch the GUI decompiler and you can open your `yourfoo.jar` file and read it almost like source code
 
 ### mitmproxy
 ```

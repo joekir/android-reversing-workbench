@@ -11,11 +11,15 @@ if [ "$(uname)" == 'Darwin' ]; then
     fi
 
     SCRIPT_DIR=$(dirname $(greadlink -f $0))
+    XHOST=/opt/X11/bin/xhost
 else
     SCRIPT_DIR=$(dirname $(readlink -f $0))
+    XHOST=xhost
 fi
 
-# Allow X11
-xhost +local:root
+# allow access from localhost
+$XHOST + 127.0.0.1
 
-docker run -v $SCRIPT_DIR/../samples:/tmp/samples -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --rm -it --network none android-reversing-workbench:latest
+echo "caution: networking now in bridge (docker default) mode"
+
+docker run -v $SCRIPT_DIR/../samples:/tmp/samples -e DISPLAY=host.docker.internal:0 --rm -it android-reversing-workbench:latest
