@@ -6,19 +6,20 @@ ENV LANG=en_CA.UTF-8
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y \
-    openjdk-11-jdk \
+    android-sdk \
+    git \
     libcanberra-gtk-module \
     libcanberra-gtk3-module \
-    wget \
-    git \
-    vim \
-    sudo \
+    openjdk-11-jdk \
     python \
     python-pip \
     python3-pip \
-    xdg-utils \
+    silversearcher-ag \
+    sudo \
     unzip \
-    android-sdk
+    vim \
+    wget \
+    xdg-utils
 
 RUN cd `mktemp -d` \
     && wget -nv https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool -O apktool \
